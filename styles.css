@@ -30,3 +30,19 @@ The designs were created to the following widths:
 
 - Family: [League Spartan](https://fonts.google.com/specimen/League+Spartan)
 - Weights: 500, 700 */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Primary */
+    --desatCyan:  hsl(180, 29%, 50%);
+    /* Neutral */
+    --bgGrayishCyan: hsl(180, 52%, 96%);
+    --filterGrayishCyan: hsl(180, 31%, 95%);
+    --darkGrayishCyan: hsl(180, 8%, 52%);
+    --veryDarkCyan: hsl(180, 14%, 20%);
+}
+
