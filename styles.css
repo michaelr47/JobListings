@@ -46,3 +46,8 @@ The designs were created to the following widths:
     --veryDarkCyan: hsl(180, 14%, 20%);
 }
 
+ img {
+    width: 100%;
+}
+
+ 
