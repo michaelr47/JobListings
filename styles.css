@@ -50,4 +50,26 @@ The designs were created to the following widths:
     width: 100%;
 }
 
- 
+header {
+    position: relative;
+    margin-bottom: 5rem;
+}
+
+.tags {
+    height: 80px;
+    width: 65%;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.tags button {
+    margin-left: auto;
+    margin-right: 1rem;
+}
