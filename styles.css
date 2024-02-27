@@ -34,6 +34,7 @@ The designs were created to the following widths:
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    font-family: "League Spartan", sans-serif;
 }
 
 :root {
@@ -59,6 +60,7 @@ header {
     height: 80px;
     width: 65%;
     padding: 10px;
+    background-color: white;
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -73,4 +75,9 @@ header {
 .tags button {
     margin-left: auto;
     margin-right: 1rem;
+    border: none;
+    color: var(--darkGrayishCyan);
+    background-color: transparent;
+    font-weight: 700;
+    font-size: 1rem;
 }
