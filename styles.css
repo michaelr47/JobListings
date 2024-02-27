@@ -59,7 +59,9 @@ header {
 main {
     min-height: 100vh;
     overflow: auto;
+    padding: 2.5rem;
 }
+
 .tags {
     height: 80px;
     width: 65%;
@@ -88,4 +90,19 @@ main {
 
 .borderLeft {
     border-left: 3px solid var(--desatCyan);
+}
+
+.listings {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job {
+    width: 80%;
+    height: 125px;
+    margin: 20px auto;
+    border: 1px solid black;
 }
