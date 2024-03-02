@@ -106,9 +106,11 @@ main {
     min-width: 355px;
     height: 160px;
     margin: 20px 0px;
+    padding: 1rem;
     background-color: white;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     border-radius: 5px;
+    position: relative;
 }
 
 
