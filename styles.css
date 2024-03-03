@@ -49,7 +49,7 @@ The designs were created to the following widths:
 
 body { background-color: var(--bgGrayishCyan);}
 
- img {
+ picture img {
     width: 100%;
 }
 
@@ -113,6 +113,11 @@ main {
     position: relative;
 }
 
+.job img {
+    width: 45px;
+    position: absolute;
+    top: -25px;
+}
 
 @media only screen and (min-width: 768px) {
     main {
