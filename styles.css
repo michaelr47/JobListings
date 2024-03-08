@@ -124,6 +124,17 @@ main {
 
 h4 {
     display: inline;
+    color: var(--desatCyan);
+}
+.company { margin: 10px 0;}
+
+.new {
+    padding: 5px 10px;
+    margin: 0 10px;
+    background-color: var(--desatCyan);
+    border-radius: 20px;
+    color: white;
+    font-weight: 700;
 }
 
 @media only screen and (min-width: 768px) {
