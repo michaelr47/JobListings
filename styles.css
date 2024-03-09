@@ -134,9 +134,17 @@ h4 {
     background-color: var(--desatCyan);
     border-radius: 20px;
     color: white;
-    font-weight: 700;
+    font-weight: 500;
 }
 
+.featured {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: black;
+    border-radius: 20px;
+    color: white;
+    font-weight: 500;
+}
 @media only screen and (min-width: 768px) {
     main {
         padding: 2.5rem;
