@@ -130,7 +130,7 @@ h4 {
 
 .new {
     padding: 5px 10px;
-    margin: 0 10px;
+    margin: 0 5px;
     background-color: var(--desatCyan);
     border-radius: 20px;
     color: white;
@@ -139,7 +139,6 @@ h4 {
 
 .featured {
     padding: 5px 10px;
-    margin: 0 5px;
     background-color: black;
     border-radius: 20px;
     color: white;
