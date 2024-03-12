@@ -144,6 +144,15 @@ h4 {
     color: white;
     font-weight: 500;
 }
+
+.title-details {
+    margin: 5px 0px;
+    color: var(--darkGrayishCyan); 
+}
+
+.title-details span:not(:first-child) { margin-left: 10px; }
+
+
 @media only screen and (min-width: 768px) {
     main {
         padding: 2.5rem;
