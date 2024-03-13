@@ -126,7 +126,7 @@ h4 {
     display: inline;
     color: var(--desatCyan);
 }
-.company { margin: 10px 0;}
+.company { margin: 15px 0;}
 
 .new {
     padding: 5px 10px;
@@ -146,11 +146,13 @@ h4 {
 }
 
 .title-details {
-    margin: 5px 0px;
+    margin: 10px 0px;
     color: var(--darkGrayishCyan); 
 }
 
 .title-details span:not(:first-child) { margin-left: 10px; }
+
+.dot::before { content:"• "; }
 
 
 @media only screen and (min-width: 768px) {
@@ -160,5 +162,20 @@ h4 {
     .job {
         width: 80%;
         height: 125px;
+        position: static;
+        flex-direction: row;
+        align-items: center;
     }
+    .job img { 
+        position: static;
+        width: auto;
+        margin: 0px 20px;
+    }
+
+    .leftContent-job {
+        display: flex;
+        flex-direction: column;
+        margin-right: auto;
+    }
+    hr { display: none; }
 }
