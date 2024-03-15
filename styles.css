@@ -129,7 +129,7 @@ h4 {
     display: inline;
     color: var(--desatCyan);
 }
-.company { margin: 15px 0;}
+.company { margin: 15px 0; display: flex; align-items: center;}
 
 .new {
     padding: 5px 10px;
@@ -149,14 +149,15 @@ h4 {
 }
 
 .title-details {
-    margin: 10px 0px;
+    margin: 5px 0px;
     color: var(--darkGrayishCyan); 
     display: flex;
     flex-wrap: wrap;
 
 }
-.title-details span:not(:first-child) { margin-left: 10px; }
-.dot::before { content:"• "; }
+
+/* .title-details span:not(:first-child) { margin-left: 5px; } */
+.dot::before { content:"• "; margin: 0px 5px;  }
 .job-tags {
     display: flex; 
     justify-content: space-between;
@@ -195,3 +196,10 @@ h4 {
     }
     hr { display: none; }
 }
+
+/* @media only screen and (min-width: 768px) and (max-width: 950px) {
+    .job img {
+        margin: 0px 5px;
+    }
+
+} */
