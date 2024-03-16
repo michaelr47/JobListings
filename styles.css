@@ -173,8 +173,15 @@ h4 {
     background-color: var(--filterGrayishCyan);
     color: var(--desatCyan);
     font-size: 15px;
-
 }
+
+.job-tags button:hover {
+    cursor: pointer;
+    background-color: var(--desatCyan);
+    color: white;
+}
+
+
 
 
 @media only screen and (min-width: 768px) {
