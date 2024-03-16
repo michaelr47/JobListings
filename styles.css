@@ -113,7 +113,7 @@ main {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-around; 
 }
 
 .job img {
@@ -164,10 +164,23 @@ h4 {
     flex-wrap: wrap;
 }
 
+.job-tags button {
+    padding: 8px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 700;
+    background-color: var(--filterGrayishCyan);
+    color: var(--desatCyan);
+    font-size: 15px;
+
+}
+
 
 @media only screen and (min-width: 768px) {
     main {
         padding: 2.5rem;
+        font-size: 15px;
     }
     .job {
         width: 80%;
@@ -191,10 +204,11 @@ h4 {
 
     .job-tags {
         width: 40%;
-        /* flex-wrap: nowrap; */
         flex-direction: row;
-        /* add space between buttons */
     }
+    h4 { font-size: 18px; }
+    .title p { font-size: 20px; }
+    .title-details { font-size: 16px; }
     hr { display: none; }
 }
 
