@@ -88,6 +88,10 @@ main {
     font-weight: 700;
     font-size: 1rem;
 }
+.clearButton:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
 
 .borderLeft {
     border-left: 5px solid var(--desatCyan);
