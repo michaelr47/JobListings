@@ -25,9 +25,11 @@ const fetchData = async data => {
     })
 }
 
-const updateJobFilter = (tag, list) => {
-    tag.addEventListener('click', () => {
-
+const updateJobFilter = (buttonTag, list) => {
+    buttonTag.addEventListener('click', () => {
+        // div
+            //  span
+            //  button
     })
 }
 clearJobTags(clearButton);
