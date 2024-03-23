@@ -5,10 +5,10 @@ let arrayJobTags = Array.from(jobTags);
 
 
 const clearJobTags = (button) => {
-    const allTags = document.querySelector('.tags');
+    const chosenTags = document.querySelector('.chosen-tags');
 
     button.addEventListener('click', () => {
-        let tag = allTags.children;
+        let tag = chosenTags.children;
         for (let i = 0; i < tag.length - 1; i++) {
             tag[i].innerText = '';
         }
@@ -25,5 +25,10 @@ const fetchData = async data => {
     })
 }
 
+const updateJobFilter = (tag, list) => {
+    tag.addEventListener('click', () => {
+
+    })
+}
 clearJobTags(clearButton);
 fetchData(DATA);
