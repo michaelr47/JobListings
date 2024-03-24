@@ -1,12 +1,11 @@
 const DATA = './data.json';
 const clearButton = document.querySelector('.clearButton');
-const jobTags = document.querySelectorAll('.job-tags button');
-let arrayJobTags = Array.from(jobTags);
+const jobTags = document.querySelectorAll('.job-tags button'); // 
+const chosenTags = document.querySelector('.chosen-tags'); // div with tags
 
 
 const clearJobTags = (button) => {
-    const chosenTags = document.querySelector('.chosen-tags');
-
+  
     button.addEventListener('click', () => {
         let tag = chosenTags.children;
         for (let i = 0; i < tag.length - 1; i++) {
@@ -25,12 +24,15 @@ const fetchData = async data => {
     })
 }
 
-const updateJobFilter = (buttonTag, list) => {
-    buttonTag.addEventListener('click', () => {
-        // div
-            //  span
-            //  button
+const updateJobFilter = () => {
+    jobTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            chosenTags.append(tag);
+            console.log(tag);
+        })
     })
 }
+
 clearJobTags(clearButton);
 fetchData(DATA);
+updateJobFilter();
