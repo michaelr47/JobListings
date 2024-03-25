@@ -24,15 +24,15 @@ const fetchData = async data => {
     })
 }
 
-const updateJobFilter = () => {
-    jobTags.forEach(tag => {
-        tag.addEventListener('click', () => {
-            chosenTags.append(tag);
-            console.log(tag);
-        })
-    })
-}
+// const updateJobFilter = () => {
+//     jobTags.forEach(tag => {
+//         tag.addEventListener('click', () => {
+//             chosenTags.append(tag);
+//             console.log(tag);
+//         })
+//     })
+// }
 
 clearJobTags(clearButton);
 fetchData(DATA);
-updateJobFilter();
+// updateJobFilter();
