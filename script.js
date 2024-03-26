@@ -1,6 +1,6 @@
 const DATA = './data.json';
 const clearButton = document.querySelector('.clearButton');
-const jobTags = document.querySelectorAll('.job-tags button'); // 
+const jobTags = document.querySelectorAll('.tag'); // individual job posting tags
 const chosenTags = document.querySelector('.chosen-tags'); // div with tags
 
 
@@ -20,19 +20,29 @@ const fetchData = async data => {
     jobListings.map((job, i) => {
         let jobLanguages = job.languages;
         let jobTools = job.tools;
-        console.log('Languages: ', jobLanguages, '--- Tools: ', jobTools);
     })
 }
 
-// const updateJobFilter = () => {
-//     jobTags.forEach(tag => {
-//         tag.addEventListener('click', () => {
-//             chosenTags.append(tag);
-//             console.log(tag);
-//         })
-//     })
-// }
+const updateJobFilter = () => {
+    jobTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            let li = document.createElement('li');
+            let lastTag = Array.from(document.querySelectorAll('.chosenTag'))
+            console.log(lastTag);
+
+            // need to use template literals, e.g.
+            `
+            <li class="chosen-tag">
+            <span value="JavaScript">JavaScript</span>
+            JavaScript
+            <button value="JavaScript"><img src="./images/icon-remove.svg" alt="x icon"></button>
+            </li>
+            `
+            
+        })
+    })
+}
 
 clearJobTags(clearButton);
 fetchData(DATA);
-// updateJobFilter();
+updateJobFilter();

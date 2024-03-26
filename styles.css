@@ -79,7 +79,7 @@ main {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     border-radius: 10px;
 }
-.tag {
+.chosen-tag {
     border-radius: 5px;
     margin: 10px;
     border: none;
@@ -91,8 +91,8 @@ main {
     justify-content: center;
     align-items: center;
 }
-.tag span { padding: 5px 10px 5px; }
-.tag button {
+.chosen-tag span { padding: 5px 10px 5px; }
+.chosen-tag button {
     height: 100%;
     width: 100%;
     padding: 5px;
@@ -102,7 +102,7 @@ main {
     border: none;
     background-color: var(--desatCyan);
 }
-.tag button:hover { background-color: var(--veryDarkCyan); cursor: pointer; }
+.chosen-tag button:hover { background-color: var(--veryDarkCyan); cursor: pointer; }
 .clearButton {
     margin-left: auto;
     margin-right: 1rem;
