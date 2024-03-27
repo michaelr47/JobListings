@@ -27,18 +27,19 @@ const updateJobFilter = () => {
     jobTags.forEach(tag => {
         tag.addEventListener('click', () => {
             let li = document.createElement('li');
-            let lastTag = Array.from(document.querySelectorAll('.chosenTag'))
-            console.log(lastTag);
-
-            // need to use template literals, e.g.
-            `
-            <li class="chosen-tag">
-            <span value="JavaScript">JavaScript</span>
-            JavaScript
-            <button value="JavaScript"><img src="./images/icon-remove.svg" alt="x icon"></button>
-            </li>
-            `
+            li.innerHTML = ` 
+        
+                <span>${tag.textContent}</span>
+    
+                <button>
+                    <img src="./images/icon-remove.svg" alt="x icon">
+                </button>
+          
+            `;
+            li.classList.add('chosen-tag')
+            chosenTags.append(li);
             
+            console.log(li);
         })
     })
 }
