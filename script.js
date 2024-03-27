@@ -1,9 +1,9 @@
 const DATA = './data.json';
 const clearButton = document.querySelector('.clearButton');
 const jobTags = document.querySelectorAll('.tag'); // individual job posting tags
-const chosenTags = document.querySelector('.chosen-tags'); // div with tags
+const chosenTags = document.querySelector('.chosen-tags .list'); // list with tags
 
-
+console.log(chosenTags);
 const clearJobTags = (button) => {
   
     button.addEventListener('click', () => {
@@ -16,7 +16,8 @@ const clearJobTags = (button) => {
 
 const fetchData = async data => {
     const res = await fetch(data);
-    const jobListings = await res.json();
+    const jobListings = await res.json(); 
+    let filteredArr = [];
     jobListings.map((job, i) => {
         let jobLanguages = job.languages;
         let jobTools = job.tools;
@@ -37,12 +38,16 @@ const updateJobFilter = () => {
           
             `;
             li.classList.add('chosen-tag')
-            chosenTags.append(li);
+            chosenTags.appendChild(li);
             
             console.log(li);
         })
     })
 }
+
+// const handleDuplicateTags = () => {
+
+// }
 
 clearJobTags(clearButton);
 fetchData(DATA);
