@@ -3,7 +3,7 @@ const clearButton = document.querySelector('.clearButton');
 const jobTags = document.querySelectorAll('.tag'); // individual job posting tags
 const chosenTags = document.querySelector('.chosen-tags .list'); // list with tags
 
-console.log(chosenTags);
+
 const clearJobTags = (button) => {
   
     button.addEventListener('click', () => {
@@ -17,11 +17,18 @@ const clearJobTags = (button) => {
 const fetchData = async data => {
     const res = await fetch(data);
     const jobListings = await res.json(); 
-    let filteredArr = [];
+    let jobDetails = [];
     jobListings.map((job, i) => {
         let jobLanguages = job.languages;
         let jobTools = job.tools;
+        let jobLevel = job.level;
+        let jobRole = job.role;
+        jobDetails.push(jobLanguages, jobTools, jobLevel, jobRole);
+       
     })
+    let filterJobDetails = [...new Set(jobDetails.flat())];
+
+
 }
 
 const updateJobFilter = () => {
@@ -40,7 +47,7 @@ const updateJobFilter = () => {
             li.classList.add('chosen-tag')
             chosenTags.appendChild(li);
             
-            console.log(li);
+
         })
     })
 }
