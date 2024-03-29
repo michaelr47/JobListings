@@ -8,7 +8,7 @@ const clearJobTags = (button) => {
   
     button.addEventListener('click', () => {
         let tag = chosenTags.children;
-        for (let i = 0; i < tag.length - 1; i++) {
+        for (let i = 0; i < tag.length; i++) {
             tag[i].innerText = '';
         }
     })
@@ -27,7 +27,7 @@ const fetchData = async data => {
        
     })
     let filterJobDetails = [...new Set(jobDetails.flat())];
-
+    console.log(filterJobDetails);
 
 }
 
@@ -44,16 +44,21 @@ const updateJobFilter = () => {
                 </button>
           
             `;
-            li.classList.add('chosen-tag')
+            li.classList.add('chosen-tag');
+            tag.disabled = true;
             chosenTags.appendChild(li);
             
-
         })
     })
 }
 
-// const handleDuplicateTags = () => {
+// function handleDuplicateTagsInFilterBar(list, tag) {
+//     let listArray = Array.from(list);
 
+//     if (listArray.includes(tag)) {
+        
+//         tag.disabled = true;
+//     }
 // }
 
 clearJobTags(clearButton);
