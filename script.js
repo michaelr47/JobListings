@@ -27,13 +27,13 @@ const fetchData = async data => {
        
     })
     let filterJobDetails = [...new Set(jobDetails.flat())];
-    console.log(filterJobDetails);
 
 }
 
 const updateJobFilter = () => {
     jobTags.forEach(tag => {
         tag.addEventListener('click', () => {
+
             let li = document.createElement('li');
             li.innerHTML = ` 
         
@@ -48,18 +48,21 @@ const updateJobFilter = () => {
             tag.disabled = true;
             chosenTags.appendChild(li);
             
+            
         })
     })
 }
 
-// function handleDuplicateTagsInFilterBar(list, tag) {
-//     let listArray = Array.from(list);
+function handleDuplicateTagsInFilterBar(list, tag) {
 
-//     if (listArray.includes(tag)) {
-        
-//         tag.disabled = true;
-//     }
-// }
+    let listArray = Array.from(list);
+    
+    if (listArray.includes(tag)) {
+        tag.disabled = true;
+    }
+ 
+}
+handleDuplicateTagsInFilterBar(chosenTags, Array.from(jobTags));
 
 clearJobTags(clearButton);
 fetchData(DATA);
