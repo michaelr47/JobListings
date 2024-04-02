@@ -27,13 +27,15 @@ const fetchData = async data => {
        
     })
     let filterJobDetails = [...new Set(jobDetails.flat())];
-
+    
 }
 
 const updateJobFilter = () => {
+    const chosenTagTexts = Array.from(chosenTags.querySelectorAll('span')).map(span => span.textContent);
     jobTags.forEach(tag => {
         tag.addEventListener('click', () => {
-
+            const tagText = tag.textContent;
+            if (!chosenTagTexts.includes(tagText)) {
             let li = document.createElement('li');
             li.innerHTML = ` 
         
@@ -44,25 +46,16 @@ const updateJobFilter = () => {
                 </button>
           
             `;
+
             li.classList.add('chosen-tag');
             tag.disabled = true;
             chosenTags.appendChild(li);
-            
-            
+            chosenTagTexts.push(tagText);
+            }
         })
     })
+  
 }
-
-function handleDuplicateTagsInFilterBar(list, tag) {
-
-    let listArray = Array.from(list);
-    
-    if (listArray.includes(tag)) {
-        tag.disabled = true;
-    }
- 
-}
-handleDuplicateTagsInFilterBar(chosenTags, Array.from(jobTags));
 
 clearJobTags(clearButton);
 fetchData(DATA);
