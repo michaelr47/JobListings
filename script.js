@@ -42,7 +42,7 @@ const updateJobFilter = () => {
                 <span>${tag.textContent}</span>
     
                 <button>
-                    <img src="./images/icon-remove.svg" alt="x icon">
+                    <img class="delete" src="./images/icon-remove.svg" alt="x icon ">
                 </button>
           
             `;
@@ -51,10 +51,16 @@ const updateJobFilter = () => {
             tag.disabled = true;
             chosenTags.appendChild(li);
             chosenTagTexts.push(tagText);
+            deleteJobTag(li);
             }
         })
     })
   
+}
+
+function deleteJobTag(tag) {
+    let tagsNextElement = tag.parentElement;
+    console.log(tagsNextElement);
 }
 
 clearJobTags(clearButton);
