@@ -51,18 +51,28 @@ const updateJobFilter = () => {
             tag.disabled = true;
             chosenTags.appendChild(li);
             chosenTagTexts.push(tagText);
-            deleteJobTag(li);
+          
             }
         })
     })
   
 }
 
-function deleteJobTag(tag) {
-    let tagsNextElement = tag.parentElement;
-    console.log(tagsNextElement);
+function deleteJobTag() {
+
+    let deleteButton = Array.from(document.querySelectorAll('.chosen-tag button'));
+    console.log(deleteButton);
+    
+    deleteButton.forEach(button => {
+        button.addEventListener('click', () => {
+            let listTag = button.parentElement;
+            listTag.remove();
+        })
+    })
+  
 }
 
 clearJobTags(clearButton);
 fetchData(DATA);
 updateJobFilter();
+deleteJobTag();
