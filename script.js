@@ -34,6 +34,7 @@ const updateJobFilter = () => {
     const chosenTagTexts = Array.from(chosenTags.querySelectorAll('span')).map(span => span.textContent);
     jobTags.forEach(tag => {
         tag.addEventListener('click', () => {
+            handleIfHidden();
             const tagText = tag.textContent;
             if (!chosenTagTexts.includes(tagText)) {
             let li = document.createElement('li');
@@ -61,15 +62,22 @@ const updateJobFilter = () => {
 function deleteJobTag() {
 
     let deleteButton = Array.from(document.querySelectorAll('.chosen-tag button'));
-    console.log(deleteButton);
-    
+
     deleteButton.forEach(button => {
         button.addEventListener('click', () => {
+            console.log('clicked button')
             let listTag = button.parentElement;
             listTag.remove();
         })
     })
   
+}
+
+function handleIfHidden() {
+    const chosenTagsContainer = document.querySelector('.chosen-tags');
+    if (chosenTagsContainer.classList.contains('hidden')) {
+        chosenTagsContainer.classList.remove('hidden');
+    }
 }
 
 clearJobTags(clearButton);
