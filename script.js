@@ -43,7 +43,7 @@ const updateJobFilter = () => {
                 <span>${tag.textContent}</span>
     
                 <button>
-                    <img class="delete" src="./images/icon-remove.svg" alt="x icon ">
+                    <img src="./images/icon-remove.svg" alt="x icon ">
                 </button>
           
             `;
@@ -60,17 +60,21 @@ const updateJobFilter = () => {
 }
 
 function deleteJobTag() {
+    const chosenTagsContainer = document.querySelector('.chosen-tags .list');
 
-    let deleteButton = Array.from(document.querySelectorAll('.chosen-tag button'));
+    chosenTagsContainer.addEventListener('click', (event) => {
+        const clickedElement = event.target;
 
-    deleteButton.forEach(button => {
-        button.addEventListener('click', () => {
-            console.log('clicked button')
-            let listTag = button.parentElement;
-            listTag.remove();
-        })
-    })
-  
+        if (clickedElement.tagName === 'BUTTON' && clickedElement.parentElement.classList.contains('chosen-tag')) {
+            const listItem = clickedElement.parentElement;
+            listItem.remove();
+        }
+
+        if (clickedElement.tagName === 'IMG') {
+            const listItem = clickedElement.parentElement.parentElement;
+            listItem.remove();
+        }
+    });
 }
 
 function handleIfHidden() {
