@@ -65,14 +65,11 @@ function deleteJobTag() {
     chosenTagsContainer.addEventListener('click', (event) => {
         const clickedElement = event.target;
 
-        if (clickedElement.tagName === 'BUTTON' && clickedElement.parentElement.classList.contains('chosen-tag')) {
-            const listItem = clickedElement.parentElement;
-            listItem.remove();
-        }
-
-        if (clickedElement.tagName === 'IMG') {
-            const listItem = clickedElement.parentElement.parentElement;
-            listItem.remove();
+        if (clickedElement.tagName === 'BUTTON' || (clickedElement.tagName === 'IMG' && clickedElement.parentElement.tagName === 'BUTTON')) {
+            const listItem = clickedElement.closest('.chosen-tag');
+            if (listItem) {
+                listItem.remove();
+            }
         }
     });
 }
@@ -83,6 +80,7 @@ function handleIfHidden() {
         chosenTagsContainer.classList.remove('hidden');
     }
 }
+
 
 clearJobTags(clearButton);
 fetchData(DATA);
