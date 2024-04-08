@@ -52,7 +52,6 @@ const updateJobFilter = () => {
             tag.disabled = true;
             chosenTags.appendChild(li);
             chosenTagTexts.push(tagText);
-          
             }
         })
     })
@@ -69,6 +68,7 @@ function deleteJobTag() {
             const listItem = clickedElement.closest('.chosen-tag');
             if (listItem) {
                 listItem.remove();
+                checkFilterBar();
             }
         }
     });
@@ -79,7 +79,23 @@ function handleIfHidden() {
     if (chosenTagsContainer.classList.contains('hidden')) {
         chosenTagsContainer.classList.remove('hidden');
     }
+    chosenTagsContainer.style.display = 'flex';
 }
+
+
+function checkFilterBar() {
+    if (chosenTags.children.length === 0) {
+        chosenTags.parentElement.style.display = 'none';
+    } else {
+        chosenTags.parentElement.style.display = 'flex';
+    }
+}
+
+
+window.onload = function() {
+    handleIfHidden();
+    checkFilterBar();
+};
 
 
 clearJobTags(clearButton);
