@@ -27,10 +27,19 @@ const fetchData = async data => {
        
     })
     let filterJobDetails = [...new Set(jobDetails.flat())];
+    return filterJobDetails;
     
 }
 
-const updateJobFilter = () => {
+const filterData = async () => {
+    const data = await fetchData(DATA);
+    const jobList = Array.from(document.querySelectorAll('.job'));
+    
+   
+    
+}
+filterData();
+const addToFilter = () => {
     const chosenTagTexts = Array.from(chosenTags.querySelectorAll('span')).map(span => span.textContent);
     jobTags.forEach(tag => {
         tag.addEventListener('click', () => {
@@ -100,5 +109,5 @@ window.onload = function() {
 
 clearJobTags(clearButton);
 fetchData(DATA);
-updateJobFilter();
+addToFilter();
 deleteJobTag();
