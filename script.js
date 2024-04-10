@@ -1,7 +1,7 @@
 const DATA = './data.json';
 const clearButton = document.querySelector('.clearButton');
 const jobTags = document.querySelectorAll('.tag'); // individual job posting tags
-const chosenTags = document.querySelector('.chosen-tags .list'); // list with tags
+const chosenTags = document.querySelector('.chosen-tags .list'); // filter bar
 
 
 const clearJobTags = (button) => {
@@ -16,7 +16,9 @@ const clearJobTags = (button) => {
 
 const fetchData = async data => {
     const res = await fetch(data);
-    const jobListings = await res.json(); 
+    const jobListings = await res.json();
+     
+    
     let jobDetails = [];
     jobListings.map((job, i) => {
         let jobLanguages = job.languages;
@@ -38,19 +40,20 @@ const filterData = async () => {
    
     
 }
-filterData();
+// filterData();
 const addToFilter = () => {
     const chosenTagTexts = Array.from(chosenTags.querySelectorAll('span')).map(span => span.textContent);
+    
     jobTags.forEach(tag => {
         tag.addEventListener('click', () => {
-            handleIfHidden();
+            displayFilterBar();
             const tagText = tag.textContent;
             if (!chosenTagTexts.includes(tagText)) {
             let li = document.createElement('li');
             li.innerHTML = ` 
         
                 <span>${tag.textContent}</span>
-    
+                                                        
                 <button>
                     <img src="./images/icon-remove.svg" alt="x icon ">
                 </button>
@@ -61,7 +64,9 @@ const addToFilter = () => {
             tag.disabled = true;
             chosenTags.appendChild(li);
             chosenTagTexts.push(tagText);
+                
             }
+            
         })
     })
   
@@ -83,7 +88,7 @@ function deleteJobTag() {
     });
 }
 
-function handleIfHidden() {
+function displayFilterBar() {
     const chosenTagsContainer = document.querySelector('.chosen-tags');
     if (chosenTagsContainer.classList.contains('hidden')) {
         chosenTagsContainer.classList.remove('hidden');
@@ -102,7 +107,6 @@ function checkFilterBar() {
 
 
 window.onload = function() {
-    handleIfHidden();
     checkFilterBar();
 };
 
