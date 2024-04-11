@@ -14,56 +14,59 @@ const clearJobTags = (button) => {
     })
 }
 
-const fetchData = async data => {
-    const res = await fetch(data);
-    const jobListings = await res.json();
-     
-    
-    let jobDetails = [];
-    jobListings.map((job, i) => {
-        let jobLanguages = job.languages;
-        let jobTools = job.tools;
-        let jobLevel = job.level;
-        let jobRole = job.role;
-        jobDetails.push(jobLanguages, jobTools, jobLevel, jobRole);
-       
-    })
-    let filterJobDetails = [...new Set(jobDetails.flat())];
-    return filterJobDetails;
-    
+const fetchData = async (data) => {
+    try {
+        const res = await fetch(data);
+        if (!res.ok) {
+            throw new Error('Failed to fetch data');
+        }
+        const jobListings = await res.json();
+        return jobListings;
+    } catch (error) {
+        console.error('Error fetching data:', error.message);
+        return;
+    };
 }
 
-const filterData = async () => {
-    const data = await fetchData(DATA);
-    const jobList = Array.from(document.querySelectorAll('.job'));
+
+ const filterJobListings = (jobListings, selectedTags) => {
     
+    return jobListings.filter(job => {
+        const matchesTags = job.languages.concat(job.tools).some(tag => selectedTags.includes(tag));    
+        const matchesLevel = selectedTags.includes(job.level);
+        const matchesRole = selectedTags.includes(job.role);
+      
+        return matchesTags || matchesLevel || matchesRole;
+        });
+    };
    
-    
-}
-// filterData();
-const addToFilter = () => {
+
+const addToFilter = async () => {
     const chosenTagTexts = Array.from(chosenTags.querySelectorAll('span')).map(span => span.textContent);
-    
+    const jobListings = await fetchData(DATA);
     jobTags.forEach(tag => {
-        tag.addEventListener('click', () => {
-            displayFilterBar();
+        tag.addEventListener('click', async () => {
+            
+            displayFilterBar();    
+            filterJobListings(jobListings, chosenTagTexts);
+            console.log(jobListings, chosenTagTexts);
             const tagText = tag.textContent;
             if (!chosenTagTexts.includes(tagText)) {
-            let li = document.createElement('li');
-            li.innerHTML = ` 
-        
-                <span>${tag.textContent}</span>
-                                                        
-                <button>
-                    <img src="./images/icon-remove.svg" alt="x icon ">
-                </button>
-          
-            `;
+                let li = document.createElement('li');
+                li.innerHTML = ` 
+            
+                    <span>${tag.textContent}</span>
+                                                            
+                    <button>
+                        <img src="./images/icon-remove.svg" alt="x icon ">
+                    </button>
+            
+                `;
 
-            li.classList.add('chosen-tag');
-            tag.disabled = true;
-            chosenTags.appendChild(li);
-            chosenTagTexts.push(tagText);
+                li.classList.add('chosen-tag');
+                tag.disabled = true;
+                chosenTags.appendChild(li);
+                chosenTagTexts.push(tagText);
                 
             }
             
@@ -112,6 +115,5 @@ window.onload = function() {
 
 
 clearJobTags(clearButton);
-fetchData(DATA);
 addToFilter();
 deleteJobTag();
