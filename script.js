@@ -108,6 +108,65 @@ function checkFilterBar() {
     }
 }
 
+// render filtered job listings function - example
+const updateJobListingsUI = (jobListings) => {
+
+    const jobListingsContainer = document.querySelector('.job-listings');
+
+
+    jobListingsContainer.innerHTML = '';
+
+    // Iterate over the filtered job listings and render each job listing
+    jobListings.forEach(job => {
+        // Create elements for job listing
+        const jobElement = document.createElement('div');
+        jobElement.classList.add('job');
+        
+        const imageElement = document.createElement('img');
+        imageElement.src = job.logo;
+        imageElement.alt = job.company;
+        
+        const leftContentElement = document.createElement('div');
+        leftContentElement.classList.add('leftContent-job');
+        
+        const companyElement = document.createElement('div');
+        companyElement.classList.add('company');
+        companyElement.innerHTML = `<h4>${job.company}</h4>`;
+        
+        const titleElement = document.createElement('div');
+        titleElement.classList.add('title');
+        titleElement.innerHTML = `
+            <p><b>${job.position}</b></p>
+            <div class="title-details">
+                <span>${job.postedAt}</span>
+                <span class="dot"></span>
+                <span>${job.contract}</span>
+                <span class="dot"></span>
+                <span>${job.location}</span>
+            </div>
+        `;
+        
+        const jobTagsElement = document.createElement('div');
+        jobTagsElement.classList.add('job-tags');
+        job.languages.concat(job.tools).forEach(tag => {
+            const tagButton = document.createElement('button');
+            tagButton.classList.add('tag');
+            tagButton.textContent = tag;
+            jobTagsElement.appendChild(tagButton);
+        });
+        
+       
+        leftContentElement.appendChild(companyElement);
+        leftContentElement.appendChild(titleElement);
+        jobElement.appendChild(imageElement);
+        jobElement.appendChild(leftContentElement);
+        jobElement.appendChild(document.createElement('hr'));
+        jobElement.appendChild(jobTagsElement);
+
+      
+        jobListingsContainer.appendChild(jobElement);
+    });
+};
 
 window.onload = function() {
     checkFilterBar();
