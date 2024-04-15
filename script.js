@@ -46,9 +46,9 @@ const addToFilter = async () => {
     const jobListings = await fetchData(DATA);
     jobTags.forEach(tag => {
         tag.addEventListener('click', async () => {
-            
             displayFilterBar();    
-            filterJobListings(jobListings, chosenTagTexts);
+            const filteredListings = filterJobListings(jobListings, chosenTagTexts);
+            updateJobListingsUI(filteredListings);
             console.log(jobListings, chosenTagTexts);
             const tagText = tag.textContent;
             if (!chosenTagTexts.includes(tagText)) {
@@ -109,9 +109,9 @@ function checkFilterBar() {
 }
 
 // render filtered job listings function - example
-const updateJobListingsUI = (jobListings) => {
+function updateJobListingsUI(jobListings) {
 
-    const jobListingsContainer = document.querySelector('.job-listings');
+    const jobListingsContainer = document.querySelector('.listings');
 
 
     jobListingsContainer.innerHTML = '';
