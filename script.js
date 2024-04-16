@@ -29,16 +29,16 @@ const fetchData = async (data) => {
 }
 
 
- const filterJobListings = (jobListings, selectedTags) => {
+ const filterJobListings = (jobListings, selectedTags) => { 
     
     return jobListings.filter(job => {
-        const matchesTags = job.languages.concat(job.tools).some(tag => selectedTags.includes(tag));    
-        const matchesLevel = selectedTags.includes(job.level);
-        const matchesRole = selectedTags.includes(job.role);
+        const matchesTags = job.languages.concat(job.tools).some(tag => selectedTags.includes(tag));   
+        const matchesLevel = selectedTags.includes(job.level);   
+        const matchesRole = selectedTags.includes(job.role);  
       
         return matchesTags || matchesLevel || matchesRole;
-        });
-    };
+    });
+};
    
 
 const addToFilter = async () => {
@@ -48,8 +48,6 @@ const addToFilter = async () => {
         tag.addEventListener('click', async () => {
             displayFilterBar();    
             const filteredListings = filterJobListings(jobListings, chosenTagTexts);
-            updateJobListingsUI(filteredListings);
-            console.log(jobListings, chosenTagTexts);
             const tagText = tag.textContent;
             if (!chosenTagTexts.includes(tagText)) {
                 let li = document.createElement('li');
@@ -67,8 +65,9 @@ const addToFilter = async () => {
                 tag.disabled = true;
                 chosenTags.appendChild(li);
                 chosenTagTexts.push(tagText);
-                
+                   
             }
+            updateJobListingsUI(filteredListings)
             
         })
     })
@@ -112,8 +111,7 @@ function checkFilterBar() {
 function updateJobListingsUI(jobListings) {
 
     const jobListingsContainer = document.querySelector('.listings');
-
-
+    console.log(jobListingsContainer);
     jobListingsContainer.innerHTML = '';
 
     // Iterate over the filtered job listings and render each job listing
@@ -121,7 +119,7 @@ function updateJobListingsUI(jobListings) {
         // Create elements for job listing
         const jobElement = document.createElement('div');
         jobElement.classList.add('job');
-        
+       
         const imageElement = document.createElement('img');
         imageElement.src = job.logo;
         imageElement.alt = job.company;
@@ -173,6 +171,6 @@ window.onload = function() {
 };
 
 
-clearJobTags(clearButton);
 addToFilter();
+clearJobTags(clearButton);
 deleteJobTag();
