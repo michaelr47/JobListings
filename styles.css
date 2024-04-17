@@ -130,6 +130,7 @@ ul {
 .clearButton:hover {
     cursor: pointer;
     text-decoration: underline;
+    color: var(--desatCyan);
 }
 
 .borderLeft {

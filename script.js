@@ -113,7 +113,7 @@ function updateJobListingsUI(jobListings) {
     const jobListingsContainer = document.querySelector('.listings');
     console.log(jobListingsContainer);
     jobListingsContainer.innerHTML = '';
-
+    console.log(jobListings);
     // Iterate over the filtered job listings and render each job listing
     jobListings.forEach(job => {
         // Create elements for job listing
