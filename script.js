@@ -46,9 +46,10 @@ const addToFilter = async () => {
     const jobListings = await fetchData(DATA);
     jobTags.forEach(tag => {
         tag.addEventListener('click', async () => {
+            const tagText = tag.textContent;
+            chosenTagTexts.push(tagText);
             displayFilterBar();    
             const filteredListings = filterJobListings(jobListings, chosenTagTexts);
-            const tagText = tag.textContent;
             if (!chosenTagTexts.includes(tagText)) {
                 let li = document.createElement('li');
                 li.innerHTML = ` 
@@ -64,7 +65,7 @@ const addToFilter = async () => {
                 li.classList.add('chosen-tag');
                 tag.disabled = true;
                 chosenTags.appendChild(li);
-                chosenTagTexts.push(tagText);
+                // chosenTagTexts.push(tagText);
                    
             }
             updateJobListingsUI(filteredListings)
@@ -111,9 +112,9 @@ function checkFilterBar() {
 function updateJobListingsUI(jobListings) {
 
     const jobListingsContainer = document.querySelector('.listings');
-    console.log(jobListingsContainer);
+   
+
     jobListingsContainer.innerHTML = '';
-    console.log(jobListings);
     // Iterate over the filtered job listings and render each job listing
     jobListings.forEach(job => {
         // Create elements for job listing
