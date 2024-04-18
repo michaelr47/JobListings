@@ -147,7 +147,13 @@ function updateJobListingsUI(jobListings) {
         
         const jobTagsElement = document.createElement('div');
         jobTagsElement.classList.add('job-tags');
-        job.languages.concat(job.tools).forEach(tag => {
+        const languages = job.languages;
+        const tools = job.tools;
+        const level = job.level;
+        const role = job.role;
+        const jobTagsArray = [languages, tools, level, role].flat();
+
+        jobTagsArray.forEach(tag => {
             const tagButton = document.createElement('button');
             tagButton.classList.add('tag');
             tagButton.textContent = tag;
