@@ -47,10 +47,9 @@ const addToFilter = async () => {
     jobTags.forEach(tag => {
         tag.addEventListener('click', async () => {
             const tagText = tag.textContent;
-            chosenTagTexts.push(tagText);
             displayFilterBar();    
-            const filteredListings = filterJobListings(jobListings, chosenTagTexts);
             if (!chosenTagTexts.includes(tagText)) {
+                chosenTagTexts.push(tagText);
                 let li = document.createElement('li');
                 li.innerHTML = ` 
             
@@ -68,6 +67,7 @@ const addToFilter = async () => {
                 // chosenTagTexts.push(tagText);
                    
             }
+            const filteredListings = filterJobListings(jobListings, chosenTagTexts);
             updateJobListingsUI(filteredListings)
             
         })
