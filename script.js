@@ -7,10 +7,12 @@ const chosenTags = document.querySelector('.chosen-tags .list'); // filter bar
 const clearJobTags = (button) => {
   
     button.addEventListener('click', () => {
+      
         let tag = chosenTags.children;
         for (let i = 0; i < tag.length; i++) {
-            tag[i].innerText = '';
+            tag[i].remove();
         }
+        checkFilterBar();
     })
 }
 
@@ -64,7 +66,6 @@ const addToFilter = async () => {
                 li.classList.add('chosen-tag');
                 tag.disabled = true;
                 chosenTags.appendChild(li);
-                // chosenTagTexts.push(tagText);
                    
             }
             const filteredListings = filterJobListings(jobListings, chosenTagTexts);
@@ -113,11 +114,9 @@ function updateJobListingsUI(jobListings) {
 
     const jobListingsContainer = document.querySelector('.listings');
    
-
     jobListingsContainer.innerHTML = '';
-    // Iterate over the filtered job listings and render each job listing
+  
     jobListings.forEach(job => {
-        // Create elements for job listing
         const jobElement = document.createElement('div');
         jobElement.classList.add('job');
        
