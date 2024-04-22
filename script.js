@@ -13,6 +13,7 @@ const clearJobTags = (button) => {
             tag[i].remove();
         }
         checkFilterBar();
+        pageRefresh();
     })
 }
 
@@ -172,10 +173,14 @@ function updateJobListingsUI(jobListings) {
     });
 };
 
+function pageRefresh() {
+   return window.location.reload();
+   
+}
+
 window.onload = function() {
     checkFilterBar();
-};
-
+}
 
 addToFilter();
 clearJobTags(clearButton);
